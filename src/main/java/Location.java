@@ -1,8 +1,9 @@
 public enum Location {
-    ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY
+    BASE, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY;
 
     public static int toInteger(Location location) {
         return switch (location) {
+            case BASE -> 0;
             case ONE -> 1;
             case TWO -> 2;
             case THREE -> 3;
@@ -48,7 +49,7 @@ public enum Location {
             case 18 -> EIGHTEEN;
             case 19 -> NINETEEN;
             case 20 -> TWENTY;
-            default -> null;
+            default -> BASE;
         };
     }
 }
