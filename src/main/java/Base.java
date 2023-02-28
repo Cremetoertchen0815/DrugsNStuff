@@ -11,8 +11,8 @@ public class Base extends DrugLocation {
         var decryptedMessage = RSA.decrypt(request.getEncryptedMessage(), keys.u());
         log(new ProtocolEntry(LocalDateTime.now(), location, request.getEncryptedMessage(), decryptedMessage));
         //Parse message
-        var start = decryptedMessage.indexOf("X");
-        var length = decryptedMessage.lastIndexOf("X") - start - 18;
+        var start = decryptedMessage.indexOf("X") + 1;
+        var length = decryptedMessage.lastIndexOf("X") - 19;
         var substr = decryptedMessage.substring(start, length);
         var receiverLocation = Enum.valueOf(Location.class, substr);
         drugsStoredInKG -= 100;

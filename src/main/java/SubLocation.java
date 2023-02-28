@@ -9,7 +9,7 @@ public class SubLocation extends DrugLocation {
         //Decrypt and log
         var decryptedMessage = RSA.decrypt(request.getEncryptedMessage(), keys.u());
         //Parse message
-        var substr = decryptedMessage.substring(35);
+        var substr = decryptedMessage.substring(34);
         var receiverLocation = Enum.valueOf(Location.class, substr);
         if (receiverLocation != location) return;
         log(new ProtocolEntry(LocalDateTime.now(), location, request.getEncryptedMessage(), decryptedMessage));

@@ -14,6 +14,7 @@ public abstract class DrugLocation {
         this.communicationBus = communicationBus;
         this.keys = keys;
         this.location = location;
+        communicationBus.register(this);
     }
 
     public static void log(ProtocolEntry entry) {
