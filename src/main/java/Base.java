@@ -1,14 +1,18 @@
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+
 
 public class Base extends DrugLocation {
 
+    private RSA rsa;
     @Subscribe
     public void receiveRequest(DrugRequest request) {
         //Decrypt and log
-        var decryptedMessage = RSA.decrypt(request.getEncryptedMessage(), keys.u());
+        rsa = new RSA();
+        var decryptedMessage = rsa.decrypt(request.getEncryptedMessage(),rsa.getPrivateKey());
         log(new ProtocolEntry(LocalDateTime.now(), location, request.getEncryptedMessage(), decryptedMessage));
         //Parse message
         var start = decryptedMessage.indexOf("X") + 1;

@@ -14,8 +14,12 @@ public class Main {
                 continue;
             }
             cartel.getSubLocations()[i].requestDrugs();
-            //Uncomment, when encryption and decryption of rsa is implemented
-//            msa.crackRequest(cartel.getSubLocations()[i].getDrugRequest());
+            var msa = new MSA(cartel);
+            try {
+                msa.crackRequest(cartel.getSubLocations()[i].getDrugRequest());
+            }catch(Exception e){
+                System.out.println(e);
+            }
         }
 
 

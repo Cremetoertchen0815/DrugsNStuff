@@ -5,8 +5,10 @@ public class SinaloaCartel {
     private SubLocation[] subLocations;
     private EventBus eventBus;
     private final KeyPair keys;
+    private RSA rsa;
     public SinaloaCartel() {
-        keys = RSA.generateRandomKeyPair();
+        rsa = new RSA();
+        keys = rsa.getKeyPair();
         eventBus = new EventBus();
         base = new Base(eventBus, keys);
         subLocations = new SubLocation[20];

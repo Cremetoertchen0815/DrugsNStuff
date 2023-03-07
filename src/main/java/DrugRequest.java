@@ -1,5 +1,5 @@
 public class DrugRequest {
-    private final String message;
+    private final byte[] message;
     private String preEncryption;
     private PublicRSAKey publicRSAKey;
 
@@ -7,10 +7,11 @@ public class DrugRequest {
         this.publicRSAKey = publicRSAKey;
         this.preEncryption = "LOCATIONX" + location.name() + "XREQUESTXONEHUNDREDX";
         var preEncryptionMessage = "LOCATIONX" + location.name() + "XREQUESTXONEHUNDREDX";
-        message = RSA.encrypt(preEncryptionMessage, publicRSAKey);
+        var rsa = new RSA();
+        message = rsa.encrypt(preEncryptionMessage, publicRSAKey);
     }
 
-    public String getEncryptedMessage() {
+    public byte[] getEncryptedMessage() {
         return message;
     }
 

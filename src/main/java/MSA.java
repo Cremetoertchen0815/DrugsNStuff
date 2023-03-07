@@ -17,12 +17,11 @@ public class MSA{
     }
 
     public void crackRequest(DrugRequest drugRequest) throws RSACrackerException {
-        String msg = drugRequest.getEncryptedMessage();
-        byte[] msgBytes = msg.getBytes();
+        byte[] msg = drugRequest.getEncryptedMessage();
         StringBuilder str = new StringBuilder();
 
-        for (int i = 0; i < msgBytes.length; i++) {
-            BigInteger bi = new BigInteger(String.valueOf(msgBytes[i]));
+        for (int i = 0; i < msg.length; i++) {
+            BigInteger bi = new BigInteger(String.valueOf(msg[i]));
             rsaCracker = new RSACracker(this.keyPair.p().e(), this.keyPair.p().n(), bi);
             BigInteger res = rsaCracker.execute();
             str.append(res.toString());
@@ -41,12 +40,11 @@ public class MSA{
     }
 
     public boolean crackDelivery(DrugDelivery drugDelivery) throws RSACrackerException {
-        String msg = drugDelivery.getEncryptedMessage();
-        byte[] msgBytes = msg.getBytes();
+        byte[] msg = drugDelivery.getEncryptedMessage();
         StringBuilder str = new StringBuilder();
 
-        for (int i = 0; i < msgBytes.length; i++) {
-            BigInteger bi = new BigInteger(String.valueOf(msgBytes[i]));
+        for (int i = 0; i < msg.length; i++) {
+            BigInteger bi = new BigInteger(String.valueOf(msg[i]));
             rsaCracker = new RSACracker(this.keyPair.p().e(), this.keyPair.p().n(), bi);
             BigInteger res = rsaCracker.execute();
             str.append(res.toString());

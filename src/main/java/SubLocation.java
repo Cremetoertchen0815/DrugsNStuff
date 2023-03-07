@@ -8,7 +8,8 @@ public class SubLocation extends DrugLocation {
     @Subscribe
     public void receiveRequest(DrugDelivery request) {
         //Decrypt and log
-        var decryptedMessage = RSA.decrypt(request.getEncryptedMessage(), keys.u());
+        var rsa = new RSA();
+        var decryptedMessage = rsa.decrypt(request.getEncryptedMessage(), keys.u());
         //Parse message
         var substr = decryptedMessage.substring(34);
         var receiverLocation = Enum.valueOf(Location.class, substr);
