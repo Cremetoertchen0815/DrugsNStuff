@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         var cartel = new SinaloaCartel();
         var scanner = new Scanner(System.in);
         System.out.println("Enter number of sub location to order drugs:");
@@ -14,5 +15,7 @@ public class Main {
             }
             cartel.getSubLocations()[i].requestDrugs();
         }
+
+
     }
 }
