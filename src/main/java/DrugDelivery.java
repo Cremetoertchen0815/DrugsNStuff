@@ -1,16 +1,13 @@
 public class DrugDelivery {
     private final byte[] message;
-    private String preEncryption;
-    private PublicRSAKey publicRSAKey;
-
-    private RSA rsa;
+    private final String preEncryption;
+    private final PublicRSAKey publicRSAKey;
 
     public DrugDelivery(Location location, PublicRSAKey publicRSAKey) {
         this.publicRSAKey = publicRSAKey;
         this.preEncryption = "DRUGSXONEHUNDREDXSENDXTOYLOCATIONX" + location.name();
         String preEncryptionMessage = "DRUGSXONEHUNDREDXSENDXTOYLOCATIONX" + location.name();
-        rsa = new RSA();
-        message = rsa.encrypt(preEncryptionMessage, publicRSAKey);
+        message = RSA.encrypt(preEncryptionMessage, publicRSAKey);
     }
 
     public byte[] getEncryptedMessage() {

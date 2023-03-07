@@ -1,14 +1,13 @@
 import com.google.common.eventbus.EventBus;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public abstract class DrugLocation {
+    protected static ArrayList<ProtocolEntry> protocolEntries = new ArrayList<>();
     protected final EventBus communicationBus;
     protected final KeyPair keys;
     protected final Location location;
     protected double drugsStoredInKG = 0;
-    protected static ArrayList<ProtocolEntry> protocolEntries = new ArrayList<>();
 
     public DrugLocation(EventBus communicationBus, KeyPair keys, Location location) {
         this.communicationBus = communicationBus;

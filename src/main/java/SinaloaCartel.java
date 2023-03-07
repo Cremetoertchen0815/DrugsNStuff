@@ -1,14 +1,13 @@
 import com.google.common.eventbus.EventBus;
 
 public class SinaloaCartel {
-    private Base base;
-    private SubLocation[] subLocations;
-    private EventBus eventBus;
     private final KeyPair keys;
-    private RSA rsa;
+    private final Base base;
+    private final SubLocation[] subLocations;
+    private final EventBus eventBus;
+
     public SinaloaCartel() {
-        rsa = new RSA();
-        keys = rsa.getKeyPair();
+        keys = new KeyPair("211363876292463127824964365018172523449", "188002462532244176330161643856367865419");
         eventBus = new EventBus();
         base = new Base(eventBus, keys);
         subLocations = new SubLocation[20];

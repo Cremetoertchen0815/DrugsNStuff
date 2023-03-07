@@ -1,15 +1,10 @@
-import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
-
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.BitSet;
 
-public class MSA{
+public class MSA {
     private RSACracker rsaCracker;
-    private KeyPair keyPair;
+    private final KeyPair keyPair;
     private String encryptedMsg;
-    private SinaloaCartel sinaloaCartel;
+    private final SinaloaCartel sinaloaCartel;
 
     public MSA(SinaloaCartel cartel) {
         this.sinaloaCartel = cartel;

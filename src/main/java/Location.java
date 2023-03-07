@@ -28,7 +28,7 @@ public enum Location {
     }
 
     public static Location fromInteger(int integer) {
-        return switch(integer) {
+        return switch (integer) {
             case 1 -> ONE;
             case 2 -> TWO;
             case 3 -> THREE;
