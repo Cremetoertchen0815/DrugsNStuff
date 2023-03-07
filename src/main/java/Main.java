@@ -16,7 +16,10 @@ public class Main {
             cartel.getSubLocations()[i].requestDrugs();
             var msa = new MSA(cartel);
             try {
-                msa.crackRequest(cartel.getSubLocations()[i].getDrugRequest());
+                //RSA code returns invalid result, see class RSA for more details
+                //This is why the cracker is commented out
+
+                //msa.crackRequest(cartel.getSubLocations()[i].getDrugRequest());
             } catch (Exception e) {
                 System.out.println(e);
             }
