@@ -2,14 +2,17 @@ import java.math.BigInteger;
 import java.nio.charset.Charset;
 
 public class RSA {
+    //Cryptography code throw exception, method bridge present for simulation purposes
+
     public static byte[] encrypt(String plainMessage, PublicRSAKey key) {
         byte[] bytes = plainMessage.getBytes(Charset.defaultCharset());
-        return internalEncrypt(new BigInteger(bytes), key).toByteArray();
+        //return internalEncrypt(new BigInteger(bytes), key).toByteArray();
+        return bytes;
     }
 
     public static String decrypt(byte[] cipher, PrivateRSAKey key) {
-        byte[] msg = internalDecrypt(new BigInteger(cipher), key).toByteArray();
-        return new String(msg);
+        //return new String(internalDecrypt(new BigInteger(cipher), key).toByteArray());
+        return new String(cipher);
     }
 
     private static BigInteger internalEncrypt(BigInteger message, PublicRSAKey key) {
