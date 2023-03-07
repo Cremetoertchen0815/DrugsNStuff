@@ -2,7 +2,7 @@ import java.math.BigInteger;
 import java.nio.charset.Charset;
 
 public class RSA {
-    //Cryptography code throw exception, method bridge present for simulation purposes
+    //Cryptography code throws exception, method bridge present for simulation purposes
 
     public static byte[] encrypt(String plainMessage, PublicRSAKey key) {
         byte[] bytes = plainMessage.getBytes(Charset.defaultCharset());
