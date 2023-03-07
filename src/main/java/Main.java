@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RSACrackerException {
         var cartel = new SinaloaCartel();
         var scanner = new Scanner(System.in);
+        var msa = new MSA(cartel);
         System.out.println("Enter number of sub location to order drugs:");
         while(true) {
             System.out.println("location-");
@@ -13,6 +14,8 @@ public class Main {
                 continue;
             }
             cartel.getSubLocations()[i].requestDrugs();
+            //Uncomment, when encryption and decryption of rsa is implemented
+//            msa.crackRequest(cartel.getSubLocations()[i].getDrugRequest());
         }
     }
 }

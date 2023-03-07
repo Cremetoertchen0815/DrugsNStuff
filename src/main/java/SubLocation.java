@@ -4,6 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import java.time.LocalDateTime;
 
 public class SubLocation extends DrugLocation {
+    private DrugRequest drugRequest;
     @Subscribe
     public void receiveRequest(DrugDelivery request) {
         //Decrypt and log
@@ -21,6 +22,11 @@ public class SubLocation extends DrugLocation {
     }
 
     public void requestDrugs() {
-        communicationBus.post(new DrugRequest(location, keys.p()));
+        this.drugRequest = new DrugRequest(location, keys.p());
+        communicationBus.post(drugRequest);
+    }
+
+    public DrugRequest getDrugRequest() {
+        return drugRequest;
     }
 }

@@ -4,7 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import java.time.LocalDateTime;
 
 public class Base extends DrugLocation {
-
+    private DrugDelivery drugDelivery;
     @Subscribe
     public void receiveRequest(DrugRequest request) {
         //Decrypt and log
@@ -17,11 +17,16 @@ public class Base extends DrugLocation {
         var receiverLocation = Enum.valueOf(Location.class, substr);
         drugsStoredInKG -= 100;
 
-        communicationBus.post(new DrugDelivery(receiverLocation, keys.p()));
+        this.drugDelivery = new DrugDelivery(receiverLocation, keys.p());
+        communicationBus.post(drugDelivery);
     }
 
     public Base(EventBus communicationBus, KeyPair keys) {
         super(communicationBus, keys, Location.BASE);
         drugsStoredInKG = 15000;
+    }
+
+    public DrugDelivery getDrugDelivery() {
+        return drugDelivery;
     }
 }
